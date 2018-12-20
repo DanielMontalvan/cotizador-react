@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 
 class Formulario extends Component{
+    contizarSeguro(){
+        alert("go")
+    }
  render() {
     return (
-        <form className="cotizar-auto">
+        <form className="cotizar-auto" onSubmit={this.cotizarSeguro}>
             <div className="campo">
                 <label>Marca</label>
                 <select name="marca" >

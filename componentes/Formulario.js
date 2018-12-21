@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 
 class Formulario extends Component{
-    contizarSeguro(){
-        alert("go")
-    }
+   cotizarSeguro=event=>{
+event.preventDefault();
+console.log("data")
+
+   }
  render() {
     return (
         <form className="cotizar-auto" onSubmit={this.cotizarSeguro}>
@@ -15,7 +17,6 @@ class Formulario extends Component{
                     <option value="asiatico">Asiatico</option>
                 </select>
             </div>
-
             <div className="campo">
                 <label>Año</label>
                 <select name="year">
@@ -34,7 +35,7 @@ class Formulario extends Component{
             </div>
             <div className="campo">
                 <label>Plan:</label>
-                <input type="radio" name="plan" value="basico"/> Básico
+                <input type="radio" name="plan" value="basico" /> Básico
                 <input type="radio" name="plan" value="completo"/> Completo
             </div>
 

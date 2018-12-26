@@ -1,17 +1,35 @@
 import React, {Component} from 'react';
 
 class Formulario extends Component{
-   cotizarSeguro=event=>{
-event.preventDefault();
-console.log("data")
 
+    //refs son para leer los valaores de los campos de un formulari.
+  // constructor(props){
+ //      super(props)
+ marcaRef= React.createRef();
+ yearRef= React.createRef();
+ planBasicoRef= React.createRef();
+planCompletoRef= React.createRef();
+//    }
+    cotizarSeguro=(event)=>{
+event.preventDefault();
+//obtener los campos
+//crear el objeto
+const plan = this.planBasicoRef.current.checked?'basico':'completo';
+const infoAuto={
+    marca:this.marcaRef.current.value,
+    year:this.yearRef.current.value,
+    plan: plan
+}
+ //enviarlo al componente principal
+ this.props.cotizarSeguro(infoAuto);
+ event.currentTarget.reset();
    }
  render() {
     return (
-        <form className="cotizar-auto" onSubmit={this.cotizarSeguro}>
+        <form className="cotizar-auto" onSubmit={this.cotizarSeguro.bind(this)}>
             <div className="campo">
                 <label>Marca</label>
-                <select name="marca" >
+                <select name="marca" ref={this.marcaRef}>
                     <option value="americano">Americano</option>
                     <option value="europeo">Europeo</option>
                     <option value="asiatico">Asiatico</option>
@@ -19,7 +37,7 @@ console.log("data")
             </div>
             <div className="campo">
                 <label>Año</label>
-                <select name="year">
+                <select name="year" ref={this.yearRef}>
                     <option value="2018">2018</option>
                     <option value="2017">2017</option>
                     <option value="2016">2016</option>
@@ -35,13 +53,13 @@ console.log("data")
             </div>
             <div className="campo">
                 <label>Plan:</label>
-                <input type="radio" name="plan" value="basico" /> Básico
-                <input type="radio" name="plan" value="completo"/> Completo
+                <input type="radio" name="plan" value="basico"  ref={this.planBasicoRef}/> Básico
+                <input type="radio" name="plan" value="completo" ref={this.planCompletoRef}/> Completo
             </div>
 
             <button type="submit" className="boton">Cotizar</button>
         </form>
     );
 }}
-
+//TODO: Refactorizar esto más tarde
 export default Formulario;

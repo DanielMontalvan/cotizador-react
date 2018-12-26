@@ -1,0 +1,10 @@
+En este proyecto se trabajo con lo que es creación y lectrura de formularios como  pasar parametros y de formulario padre a hijo 
+importar archivos y exportar componentes 
+
+con este comando podemos tener control de los paquetes que se instalan 
+en el proyecto luego solo ingresamos  "npm install" 
+esto sirve para que el package.json este actualizado y para trabajor en grupos.
+
+
+npm install --save-dev react-transition-group
+
